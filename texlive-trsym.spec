@@ -1,19 +1,13 @@
-# revision 18732
-# category Package
-# catalog-ctan /fonts/trsym
-# catalog-date 2007-10-24 18:05:15 +0200
-# catalog-license lppl1.2
-# catalog-version 1.0
 Name:		texlive-trsym
-Version:	1.0
-Release:	11
+Version:	18732
+Release:	1
 Summary:	Symbols for transformations
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/fonts/trsym
 License:	LPPL1.2
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/trsym.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/trsym.doc.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/trsym.source.tar.xz
+Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/trsym.r%{version}.tar.xz
+Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/trsym.doc.r%{version}.tar.xz
+Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/trsym.source.r%{version}.tar.xz
 BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
@@ -26,12 +20,12 @@ and a package providing commands for the symbols' use in
 mathematics.
 
 %post
-    %{_sbindir}/texlive.post
+%{_sbindir}/texlive.post
 
 %postun
-    if [ $1 -eq 0 ]; then
+if [ $1 -eq 0 ]; then
 	%{_sbindir}/texlive.post
-    fi
+fi
 
 #-----------------------------------------------------------------------
 %files
@@ -51,23 +45,11 @@ mathematics.
 
 #-----------------------------------------------------------------------
 %prep
-%setup -c -a0 -a1 -a2
+%setup -c -a1 -a2
+%autopatch -p1
 
 %build
 
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar fonts tex doc source %{buildroot}%{_texmfdistdir}
-
-
-%changelog
-* Thu Jan 05 2012 Paulo Andrade <pcpa@mandriva.com.br> 1.0-2
-+ Revision: 757137
-- Rebuild to reduce used resources
-
-* Sat Nov 05 2011 Paulo Andrade <pcpa@mandriva.com.br> 1.0-1
-+ Revision: 719808
-- texlive-trsym
-- texlive-trsym
-- texlive-trsym
-
