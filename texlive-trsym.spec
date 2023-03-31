@@ -1,6 +1,6 @@
 Name:		texlive-trsym
 Version:	18732
-Release:	1
+Release:	2
 Summary:	Symbols for transformations
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/fonts/trsym
